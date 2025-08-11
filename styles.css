@@ -1,0 +1,226 @@
+body.chatgpt-index-active {
+    margin-right: 360px; 
+    transition: margin-right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+body.chatgpt-index-collapsed {
+    margin-right: 65px;
+}
+
+.chatgpt-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 360px; 
+    height: 100vh;
+    background: linear-gradient(135deg, #17192c 0%, #131422 100%);
+    border-left: 1px solid #1e2554;
+    box-shadow: -6px 0 38px rgba(0,0,0,0.24);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Inter','Segoe UI','Arial',sans-serif;
+    backdrop-filter: blur(8px);
+    overflow: hidden;
+    color: #ececf1;
+}
+.chatgpt-sidebar.collapsed, .chatgpt-sidebar:not(.active) { display: none !important; }
+
+.sidebar-header {
+    padding: 22px 20px 18px 24px;
+    border-bottom: 1px solid #202440;
+    background: linear-gradient(135deg, #282b4a 0%, #2f3472 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+    position: relative;
+}
+.sidebar-title {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 800;
+    color: #ececf1;
+    flex: 1 1 auto;
+    text-align: left;
+    letter-spacing: -0.015em;
+}
+
+.close-btn {
+    background: rgba(255,255,255,0.08);
+    border: none;
+    font-size: 34px;
+    cursor: pointer;
+    color: #ececf1;
+    padding: 4px 16px;
+    border-radius: 50%;
+    min-width: 44px;
+    min-height: 44px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.close-btn:hover { background: #3b42d6; color: #fff; transform: scale(1.12); }
+
+.prompt-list {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 12px 0;
+    scroll-behavior: smooth;
+    color: #ececf1;
+    box-sizing: border-box;
+}
+
+.empty-state {
+    padding: 60px 16px;
+    text-align: center;
+    color: #6b71a6;
+    font-size: 15px;
+    line-height: 1.6;
+    animation: fadeIn 0.6s ease-out;
+    background: transparent;
+    word-break: break-word;
+}
+@keyframes fadeIn { from {opacity:0;transform:translateY(20px);} to {opacity:1;transform:translateY(0);} }
+
+.prompt-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 12px;
+    padding: 14px 16px;
+    margin: 0 8px 6px;
+    border-radius: 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #202440;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    background: linear-gradient(120deg, #191a2e 0%, #202253 110%);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.prompt-item:hover {
+    background: linear-gradient(120deg, #31345f 0%, #31345f 100%);
+    transform: translateX(-1px);
+    border-left: 5px solid #2f3472;
+    padding-left: 12px;
+}
+
+.prompt-item.selected {
+    outline: 2px solid #22c55e;
+    outline-offset: 0;
+    box-shadow: 0 0 0 2px rgba(34,197,94,0.25);
+    border-left-color: #22c55e !important;
+}
+
+.prompt-number {
+    background: linear-gradient(135deg, #282b4a 0%, #363a7f 100%);
+    color: #ececf1;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 20px;
+    min-width: 28px;
+    text-align: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.prompt-text {
+    min-width: 0;
+    color: #e2e8f0;
+    font-size: 14px;
+    line-height: 1.5;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    max-width: 100%;
+}
+.prompt-item:hover .prompt-text { color: #fff; }
+
+.prompt-type {
+    font-size: 11px;
+    font-weight: 600;
+    color: #7f86c7;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: rgba(60, 82, 191, 0.71);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.prompt-item.user { background: linear-gradient(135deg, #2c2237 0%, #221f2e 17%); }
+.prompt-item.user:hover { background: linear-gradient(135deg, #553c7d 0%, #2f3472 90%); }
+.prompt-item.assistant { background: linear-gradient(120deg, #27213b 0%, #23416f 120%); }
+.prompt-item.assistant:hover { background: linear-gradient(120deg, #23416f 0%, #2f3472 100%); }
+.prompt-item.user .prompt-number { background: linear-gradient(135deg, #ebb134 0%, #553c7d 100%); color:#fff; }
+.prompt-item.assistant .prompt-number { background: linear-gradient(135deg, #3642cd 0%, #2f3472 100%); color:#fff; }
+
+.chatgpt-highlight {
+    background: linear-gradient(135deg, #3642cd 0%, #ebb134 114%) !important;
+    border-radius: 12px !important;
+    animation: highlight-pulse 1.6s ease-in-out;
+    box-shadow: 0 0 22px rgba(59,130,246,0.09) !important;
+}
+@keyframes highlight-pulse {
+    0%{background:#ebb134 !important;transform:scale(1.045);}
+    60%{background:#3642cd !important;}
+    100%{background:transparent !important;transform:scale(1);}
+}
+
+.floating-expand-btn {
+    position: fixed;
+    background: #22c55e;
+    color: #0b1220;
+    border: none;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10002;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.30), 0 0 0 3px rgba(34,197,94,0.25);
+    transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
+    display: none;
+
+    display: grid;
+    place-items: center;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1;
+    padding: 0;
+
+    top: 86px;
+    right: 28px;
+}
+.floating-expand-btn:hover,
+.floating-expand-btn:active,
+.floating-expand-btn:focus {
+    background: #16a34a;
+    transform: scale(1.06);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35), 0 0 0 4px rgba(34,197,94,0.28);
+    outline: none;
+}
+
+@media (max-width:768px) {
+    body.chatgpt-index-active, body.chatgpt-index-collapsed { margin-right: 0 !important; }
+    .chatgpt-sidebar { width: 100vw; left: 0; right: 0; max-width: 100vw; min-width: 0; border-radius: 0; }
+    .chatgpt-sidebar:not(.active) { display: none; }
+    .chatgpt-sidebar.active {
+        display: flex !important;
+        position: fixed;
+        bottom: 0; top: 0; left: 0; right: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(120deg, #1b1d2f 0%, #19192c 100%);
+        z-index: 10003;
+        animation: sidebarPopIn 0.45s cubic-bezier(.74,-0.11,.58,.88);
+    }
+    @keyframes sidebarPopIn { from {opacity:0;transform:translateY(100vh);} to {opacity:1;transform:translateY(0);} }
+}
+
+@media (max-width:520px) {
+    .floating-expand-btn { width: 54px; height: 54px; font-size: 30px; }
+}
