@@ -67,20 +67,7 @@ _Add GIFs or screenshots here: `assets/waygpt-1.png`, `assets/waygpt-2.gif`_
 - `content.js` — Injected logic (builds UI, observes DOM, navigation, shortcuts)
 - `styles.css` — Sidebar layout, item states, mobile overlay, launcher button
 - `assets/` — Optional screenshots/GIFs for the README
-
-## How It Works (High Level)
-- A content script injects a sidebar and listens for DOM changes with `MutationObserver`.
-- It scans the visible conversation for message nodes, extracts text, and builds an index.
-- Clicking an index item scrolls to the corresponding chat turn and briefly highlights it.
-- On desktop, selection persists and the sidebar remains open by design.
-- On mobile, the overlay closes after navigating to keep the chat visible.
-
-## Configuration Tips
-- Sidebar width: edit width and page margin in `styles.css` (`.chatgpt-sidebar` width and `body.chatgpt-index-active` margin-right).
-- Index preview length: change `maxLength` in `createPreview()` inside `content.js`.
-- Launcher color: update `.floating-expand-btn` colors in `styles.css`.
-- Selection outline color: update `.prompt-item.selected` in `styles.css`.
-
+- 
 ## Troubleshooting
 
 ### Sidebar/launcher overlaps ChatGPT UI
