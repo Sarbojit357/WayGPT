@@ -67,7 +67,6 @@ _Add GIFs or screenshots here: `assets/waygpt-1.png`, `assets/waygpt-2.gif`_
 - `content.js` — Injected logic (builds UI, observes DOM, navigation, shortcuts)
 - `styles.css` — Sidebar layout, item states, mobile overlay, launcher button
 - `assets/` — Optional screenshots/GIFs for the README
-- 
 ## Troubleshooting
 
 ### Sidebar/launcher overlaps ChatGPT UI
