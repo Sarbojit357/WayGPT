@@ -41,11 +41,13 @@ Smart, in‑chat navigation for long ChatGPT threads. WayGPT adds a right‑side
  ## Desktop Screenshots 
 
  ![Image1](https://github.com/user-attachments/assets/1f419f8b-6ad7-4b09-8bca-1ba84aecd13e)
+ 
  ![Image2](https://github.com/user-attachments/assets/3694a789-57e9-4547-98c1-e0ae7d2944dd)
 
  ## Mobile Screenshots
   
  ![Mobile1](https://github.com/user-attachments/assets/41b92492-5e2d-4fbf-8ad5-d8c6dea7ac4b)
+ 
  ![Mobile2](https://github.com/user-attachments/assets/b631bcc0-de1f-4b23-a21a-25ff2cdefa37)
 
 ## Installation (Developer Mode)
