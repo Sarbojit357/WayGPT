@@ -1,16 +1,16 @@
 body.chatgpt-index-active {
-    margin-right: 360px; 
+    margin-right: 375px; 
     transition: margin-right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 body.chatgpt-index-collapsed {
-    margin-right: 65px;
+    margin-right:75px;
 }
 
 .chatgpt-sidebar {
     position: fixed;
     top: 0;
     right: 0;
-    width: 360px; 
+    width: 375px; 
     height: 100vh;
     background: linear-gradient(135deg, #17192c 0%, #131422 100%);
     border-left: 1px solid #1e2554;
